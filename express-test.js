@@ -12,6 +12,11 @@ server.get('/file', function(req, res){
   res.send('haha');
 });
 
+server.get('/tmp/:id', function(req, res){
+  res.set('X-Accel-Redirect', '/tmps/' + req.params.id);
+  res.send('hihi');
+});
+
 fileServer.get('/files', function(req, res){
   fs.createReadStream('./package.json').pipe(res);
 });
